@@ -6,12 +6,26 @@
     <script src="SlimeVolleyball.js"></script>
 </head>
 <body>
-    <canvas width="800" height="400" id="canvas" tabindex="1">
+    <canvas width="880" height="440" id="canvas" tabindex="1">
     </canvas>
+    <button id="start-stop" type="button">start/stop</button>
 <script>
     var canvas = document.getElementById('canvas');
     var slv = new SlimeGame(canvas);
-    slv.paint();
+    var go = true;
+	$(function(){
+		$('#start-stop').click(function(){
+			go = !go;
+		});
+	});    
+
+
+    setInterval(function(){
+    	if (go){
+	    	slv.advance();
+	    	slv.paint();
+    	}
+    }, 90);
 </script>
 </body>
 </html>
